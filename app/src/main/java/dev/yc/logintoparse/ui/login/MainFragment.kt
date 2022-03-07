@@ -1,4 +1,4 @@
-package dev.yc.logintoparse.ui.main
+package dev.yc.logintoparse.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
