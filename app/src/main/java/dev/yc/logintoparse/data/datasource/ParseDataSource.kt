@@ -1,7 +1,8 @@
 package dev.yc.logintoparse.data.datasource
 
 import dev.yc.logintoparse.data.remote.ApiResult
-import dev.yc.logintoparse.data.remote.LoginRequest
+import dev.yc.logintoparse.data.remote.request.LoginRequest
+import dev.yc.logintoparse.data.remote.request.TimeZoneRequest
 import dev.yc.logintoparse.data.service.ParseService
 import dev.yc.logintoparse.model.User
 import dev.yc.logintoparse.utils.ApiUtil
@@ -26,6 +27,22 @@ class ParseDataSource(
                 sessionToken = parseUser.sessionToken,
             )
             ApiResult.Success(user)
+        }
+    )
+
+    suspend fun updateTimeZone(
+        id: String,
+        sessionToken: String,
+        timeZone: Int,
+    ) = ApiUtil.executeAndParse(
+        apiScope = {
+            val timeZoneRequest = TimeZoneRequest(timeZone)
+            parseService.updateTimeZone(
+                id, sessionToken, timeZoneRequest
+            )
+        },
+        onApiSuccess = {
+            ApiResult.Success(it)
         }
     )
 }

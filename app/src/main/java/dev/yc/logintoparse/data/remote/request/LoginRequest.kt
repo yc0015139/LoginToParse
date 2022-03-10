@@ -1,4 +1,4 @@
-package dev.yc.logintoparse.data.remote
+package dev.yc.logintoparse.data.remote.request
 
 import com.google.gson.annotations.SerializedName
 
