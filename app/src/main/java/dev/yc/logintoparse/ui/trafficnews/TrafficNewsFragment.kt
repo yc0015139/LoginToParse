@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dev.yc.logintoparse.MainActivity
 import dev.yc.logintoparse.databinding.FragmentTrafficNewsBinding
 
@@ -31,6 +32,7 @@ class TrafficNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupNews()
+        setupOnClick()
     }
 
     private fun setupNews() {
@@ -39,6 +41,13 @@ class TrafficNewsFragment : Fragment() {
 
         viewModel.trafficNews.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+    }
+
+    private fun setupOnClick() {
+        binding.tvTimeZone.setOnClickListener {
+            val action = TrafficNewsFragmentDirections.actionToTimeZoneUpdater()
+            findNavController().navigate(action)
         }
     }
 
