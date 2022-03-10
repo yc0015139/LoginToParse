@@ -4,7 +4,7 @@ import dev.yc.logintoparse.data.datasource.ParseDataSource
 import dev.yc.logintoparse.data.datasource.TrafficDataSource
 import dev.yc.logintoparse.data.remote.config.ParseConfig
 import dev.yc.logintoparse.data.remote.config.trafficConfig
-import dev.yc.logintoparse.data.repository.LoginRepository
+import dev.yc.logintoparse.data.repository.UserRepository
 import dev.yc.logintoparse.data.repository.TrafficNewsRepository
 import dev.yc.logintoparse.data.service.ParseService
 import dev.yc.logintoparse.data.service.TrafficService
@@ -30,7 +30,7 @@ class AppContainer {
         ).createService(ParseService::class.java)
     )
     private val userDataManager = UserDataManager()
-    val loginRepository = LoginRepository(
+    val userRepository = UserRepository(
         parseDataSource,
         userDataManager,
         dispatcher = Dispatchers.IO,

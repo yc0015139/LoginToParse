@@ -20,7 +20,7 @@ class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModels(
         factoryProducer = {
             val appContainer = (activity as MainActivity).appContainer
-            LoginViewModelFactory(appContainer.loginRepository)
+            LoginViewModelFactory(appContainer.userRepository)
         }
     )
 

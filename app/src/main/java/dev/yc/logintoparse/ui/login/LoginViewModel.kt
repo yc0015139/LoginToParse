@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.yc.logintoparse.data.repository.LoginRepository
+import dev.yc.logintoparse.data.repository.UserRepository
 import dev.yc.logintoparse.ui.login.uistate.LoginState
 import dev.yc.logintoparse.utils.livedata.Event
 import dev.yc.logintoparse.utils.livedata.SingleEvent
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val repository: LoginRepository,
+    private val repository: UserRepository,
 ) : ViewModel() {
     private var _canClick = MutableLiveData(Event(true))
     val canClick: LiveData<Event<Boolean>> get() = _canClick
