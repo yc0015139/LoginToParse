@@ -1,5 +1,6 @@
 package dev.yc.logintoparse.data.repository
 
+import dev.yc.logintoparse.data.UserDataManager
 import dev.yc.logintoparse.data.datasource.ParseDataSource
 import dev.yc.logintoparse.data.remote.ApiResult
 import dev.yc.logintoparse.ui.login.LoginState
@@ -10,14 +11,14 @@ import kotlin.coroutines.CoroutineContext
 
 class LoginRepository(
     private val parseDataSource: ParseDataSource,
-    private val userRepository: UserRepository,
+    private val userDataManager: UserDataManager,
     private val dispatcher: CoroutineContext,
 ) {
     suspend fun login(account: String, password: String) =
         flow {
             when (val apiResult = parseDataSource.doLogin(account, password)) {
                 is ApiResult.Success -> {
-                    userRepository.user = apiResult.result
+                    userDataManager.user = apiResult.result
                     emit(LoginState.Success)
                 }
                 is ApiResult.Error -> {

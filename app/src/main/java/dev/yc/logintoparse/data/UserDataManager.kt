@@ -1,7 +1,7 @@
-package dev.yc.logintoparse.data.repository
+package dev.yc.logintoparse.data
 
 import dev.yc.logintoparse.ui.login.User
 
-class UserRepository {
+class UserDataManager {
     var user: User? = null
 }

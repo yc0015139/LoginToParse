@@ -1,33 +1,29 @@
-package dev.yc.logintoparse.data
+package dev.yc.logintoparse.data.service.generator
 
-import dev.yc.logintoparse.data.remote.RemoteConfig
+import dev.yc.logintoparse.data.remote.config.RemoteConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ServiceGenerator {
-    private val config: RemoteConfig = RemoteConfig()
+class ServiceGenerator(
+    config: RemoteConfig,
+    private val addOnInterceptor: Interceptor? = null,
+) {
     private val serverUrl = config.url
-
-    private val parseHeadersInterceptor = Interceptor { chain ->
-        val request = chain.request().run {
-            newBuilder()
-                .addHeader(RemoteConfig.HEADER_PARSE_APPLICATION_ID, config.parseApplicationId)
-                .build()
-        }
-        chain.proceed(request)
-    }
 
     private val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(parseHeadersInterceptor)
-        .addInterceptor(httpLoggingInterceptor)
-        .build()
+    private val okHttpClient = OkHttpClient.Builder().run {
+        if (addOnInterceptor != null) {
+            addInterceptor(addOnInterceptor)
+        }
+        addInterceptor(httpLoggingInterceptor)
+        build()
+    }
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(serverUrl)
