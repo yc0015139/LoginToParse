@@ -1,9 +1,12 @@
 package dev.yc.logintoparse.data
 
 import dev.yc.logintoparse.data.datasource.ParseDataSource
+import dev.yc.logintoparse.data.datasource.TrafficDataSource
 import dev.yc.logintoparse.data.remote.config.ParseConfig
+import dev.yc.logintoparse.data.remote.config.trafficConfig
 import dev.yc.logintoparse.data.repository.LoginRepository
 import dev.yc.logintoparse.data.service.ParseService
+import dev.yc.logintoparse.data.service.TrafficService
 import dev.yc.logintoparse.data.service.generator.ServiceGenerator
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
@@ -31,5 +34,12 @@ class AppContainer {
         parseDataSource,
         userDataManager,
         dispatcher = Dispatchers.IO,
+    )
+    
+    private val trafficConfig = trafficConfig()
+    private val trafficDataSource = TrafficDataSource(
+        trafficService = ServiceGenerator(
+            config = trafficConfig
+        ).createService(TrafficService::class.java)
     )
 }
