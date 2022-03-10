@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dev.yc.logintoparse.MainActivity
 import dev.yc.logintoparse.databinding.FragmentLoginBinding
 import dev.yc.logintoparse.utils.livedata.EventObserver
+import dev.yc.logintoparse.utils.navigation.navigateSafe
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -51,8 +53,8 @@ class LoginFragment : Fragment() {
         })
 
         viewModel.login.observe(viewLifecycleOwner, EventObserver {
-            // TODO: login success
             Toast.makeText(context, "success", Toast.LENGTH_SHORT).show()
+            navToTrafficNews()
         })
 
         viewModel.empty.observe(viewLifecycleOwner, EventObserver {
@@ -62,6 +64,11 @@ class LoginFragment : Fragment() {
         viewModel.invalid.observe(viewLifecycleOwner, EventObserver {
             Toast.makeText(context, "invalid", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun navToTrafficNews() {
+        val directions = LoginFragmentDirections.actionToTrafficNews()
+        findNavController().navigateSafe(directions)
     }
 
     override fun onDestroyView() {
