@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import dev.yc.logintoparse.data.repository.LoginRepository
+import dev.yc.logintoparse.MainActivity
 import dev.yc.logintoparse.databinding.FragmentLoginBinding
 import dev.yc.logintoparse.utils.livedata.EventObserver
-import kotlinx.coroutines.Dispatchers
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -18,9 +17,8 @@ class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels(
         factoryProducer = {
-            val dispatcher = Dispatchers.IO
-            val loginRepository = LoginRepository(dispatcher)
-            LoginViewModelFactory(loginRepository)
+            val appContainer = (activity as MainActivity).appContainer
+            LoginViewModelFactory(appContainer.loginRepository)
         }
     )
 
