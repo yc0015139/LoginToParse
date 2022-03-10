@@ -3,7 +3,7 @@ package dev.yc.logintoparse.data.repository
 import dev.yc.logintoparse.data.UserDataManager
 import dev.yc.logintoparse.data.datasource.ParseDataSource
 import dev.yc.logintoparse.data.remote.ApiResult
-import dev.yc.logintoparse.ui.login.LoginState
+import dev.yc.logintoparse.ui.login.uistate.LoginState
 import dev.yc.logintoparse.utils.ApiUtil
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

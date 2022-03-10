@@ -3,7 +3,7 @@ package dev.yc.logintoparse.data.datasource
 import dev.yc.logintoparse.data.remote.ApiResult
 import dev.yc.logintoparse.data.remote.LoginRequest
 import dev.yc.logintoparse.data.service.ParseService
-import dev.yc.logintoparse.ui.login.User
+import dev.yc.logintoparse.model.User
 import dev.yc.logintoparse.utils.ApiUtil
 
 class ParseDataSource(

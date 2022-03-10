@@ -1,4 +1,4 @@
-package dev.yc.logintoparse.ui.login
+package dev.yc.logintoparse.ui.login.uistate
 
 sealed interface LoginState {
     object Success: LoginState

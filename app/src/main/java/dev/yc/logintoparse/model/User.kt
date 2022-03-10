@@ -1,4 +1,4 @@
-package dev.yc.logintoparse.ui.login
+package dev.yc.logintoparse.model
 
 data class User(
     val id: String,
