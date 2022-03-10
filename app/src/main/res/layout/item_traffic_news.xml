@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2月21日起未來4週重大活動及施工，請用路人提早因應" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_message"
+                tools:text="臺北市交通順暢小組彙整未來4週（111.2.21-111.3.20）起預期影響交通之活動與工程施工案件，提醒用路人提早因應。活動部分：「2022陽明山花季」，陽明公園、花卉試驗中心等周邊區域於2月17日至3月20日期間實施交通管制。未來4週將舉辦之活動名稱、地點(路段)及時間詳如附件。工程部分：光復南路(大巨蛋)有路型改善工程、磺港路(北投中繼市場)整修統包工程、常德街人行地下道連通工程、松山區八德路4段全日有管線工程、重慶南路3段有中正橋改建工程、中正區與萬華區（羅斯福路、南海路、南昌路、西藏路及萬大路）及信義區（信義路6段、福德街及中坡南路）全日有捷運工程施工，捷運萬大線施工封閉南海路、西藏路及萬大路部分車道，南昌路自寧波西街口至南海路口改為南往北單行道，北往南車輛請繞行牯嶺街及寧波西街；往來萬華及中永和地區的民眾，請多利用愛國西路、和平西路及鄰近橋梁等替代道路。京站時尚廣場跨越承德路至台北地下街Y7出入口既設人行天橋拆除及新橋安裝工程，影響市民/承德路口，東西向人行陸橋。交通局鼓勵民眾搭乘大眾交通運輸、騎乘自行車或步行，一起支持綠色運輸；若需自行開車時，建議避開活動或施工地點及時段，或提前改道行駛，以免行程延誤；行經活動或施工地點時，請遵守標示並依照員警或義交指揮，小心駕駛，遇停車場滿場時，亦請勿占用道路排隊等候進場。－以下空白－自行車禁行騎樓自行車超越行人前請說借過，再從左側緩慢通過並說謝謝。" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
