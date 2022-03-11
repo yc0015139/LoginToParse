@@ -46,4 +46,6 @@ class UserRepository(
             }
         }
     }.flowOn(dispatcher)
+
+    fun getEmail() = userDataManager.user!!.email
 }
