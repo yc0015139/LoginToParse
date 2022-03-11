@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -13,13 +13,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_time_zone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:gravity="center"
             android:paddingHorizontal="16dp"
-            android:text="Time Zone"
-            android:textColor="?attr/colorOnPrimary" />
+            android:text="Time Zone" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -30,6 +30,6 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

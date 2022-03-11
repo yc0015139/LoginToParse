@@ -4,12 +4,13 @@ import dev.yc.logintoparse.data.UserDataManager
 import dev.yc.logintoparse.data.datasource.ParseDataSource
 import dev.yc.logintoparse.data.remote.ApiResult
 import dev.yc.logintoparse.ui.login.uistate.LoginState
+import dev.yc.logintoparse.ui.updateuser.uistate.TimeZoneUpdateState
 import dev.yc.logintoparse.utils.ApiUtil
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlin.coroutines.CoroutineContext
 
-class LoginRepository(
+class UserRepository(
     private val parseDataSource: ParseDataSource,
     private val userDataManager: UserDataManager,
     private val dispatcher: CoroutineContext,
@@ -31,4 +32,20 @@ class LoginRepository(
                 ApiResult.Exception -> emit(LoginState.Invalid)
             }
         }.flowOn(dispatcher)
+
+    suspend fun updateTimeZone(
+        timeZone: Int,
+    ) = flow {
+        userDataManager.user?.run {
+            val apiResult = parseDataSource.updateTimeZone(
+                id, sessionToken, timeZone
+            )
+            when (apiResult) {
+                is ApiResult.Success -> emit(TimeZoneUpdateState.Success)
+                else -> emit(TimeZoneUpdateState.Fail)
+            }
+        }
+    }.flowOn(dispatcher)
+
+    fun getEmail() = userDataManager.user!!.email
 }

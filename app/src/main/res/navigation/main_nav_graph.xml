@@ -20,6 +20,17 @@
     <fragment
         android:id="@+id/dest_traffic_news"
         android:name="dev.yc.logintoparse.ui.trafficnews.TrafficNewsFragment"
-        tools:layout="@layout/fragment_traffic_news" />
+        android:label="trafficInfo"
+        tools:layout="@layout/fragment_traffic_news">
+        <action
+            android:id="@+id/action_to_time_zone_updater"
+            app:destination="@id/dest_time_zone_updater_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dest_time_zone_updater_fragment"
+        android:name="dev.yc.logintoparse.ui.updateuser.TimeZoneUpdaterFragment"
+        android:label="TimeZoneUpdater"
+        tools:layout="@layout/fragment_time_zone_updater" />
 
 </navigation>
